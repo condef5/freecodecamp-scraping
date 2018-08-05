@@ -14,19 +14,18 @@ app.get('/', (req, res) => {
 app.get('/data', async (req, res, next) => {
   let response = [];
   try {
-    puppeteer.launch().then(async browser => {
+    puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] }).then(async browser => {
       const promises = []
       for (let i = 0; i < users.length; i++) {
         promises.push(browser.newPage().then(async page => {
-          await page.setViewport({ width: 1280, height: 800 })
           await page.goto(`https://www.freecodecamp.org/${users[i]}`);
-          await page.waitFor(1000);
+          await page.waitFor(1200);
           const result = await page.evaluate(() => {
             let username = document.querySelector('.username');
             let name = document.querySelector('.name');
             let points = document.querySelector('.points');
             return {
-              "username": username ? username.innerText : "",
+              "username": username ? username.innerText.replace("@", "") : "",
               "points": points ? parseInt(points.innerText.replace(" points", "")) : "",
               "name": name ? name.innerText : ""
             }
