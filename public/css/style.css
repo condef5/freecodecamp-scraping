@@ -3,6 +3,11 @@
        box-sizing: border-box;
 }
 
+::selection {
+  background-color: #79FFE1;
+  color: #000;
+}
+
 body {
   margin: 0;
   /* background-image: linear-gradient( 135deg, rgb(129, 251, 184) 10%, rgba(40, 199, 111, 0.43) 100%); */
@@ -29,7 +34,7 @@ body {
 
 .list__user, .list__header {
   display: flex;
-  margin-bottom: 1em;
+  margin-bottom: 1.25em;
   justify-content: space-between;
 }
 
@@ -44,6 +49,20 @@ body {
 }
 
 .username {
+  text-align: left;
+}
+
+.username a {
+  color: rgb(6, 125, 247);
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.username a:hover {
+  text-decoration: underline;
+}
+
+.username span{
   text-transform:capitalize;
 }
 
