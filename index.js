@@ -14,7 +14,12 @@ app.get('/', (req, res) => {
 app.get('/data', async (req, res, next) => {
   let response = [];
   try {
-    puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] }).then(async browser => {
+    puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox',
+        '--disable-setuid-sandbox',
+      ]
+    }).then(async browser => {
       const promises = []
       for (let i = 0; i < users.length; i++) {
         promises.push(browser.newPage().then(async page => {
