@@ -24,8 +24,6 @@ app.get('/data', async (req, res, next) => {
   fetchAsync()
     .then(data => {
       const users = data.users;
-      console.log(users)
-      console.log(2)
       try {
         puppeteer.launch({
           headless: true,
