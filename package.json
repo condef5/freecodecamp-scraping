@@ -1,7 +1,4 @@
 {
-  "engines": {
-    "node": "8.11"
-  },
   "name": "scrap",
   "version": "1.0.0",
   "main": "index.js",
