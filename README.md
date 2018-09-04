@@ -6,7 +6,7 @@ This app is used to motivate the study group of freecodecamp(Tingo María).
 
 ## Demo
 
-Demo available [here](https://survivor-camp.now.sh/).
+Demo available [here](http://space-fcc.tk).
 
 ![Demo#1](preview.png)
 
