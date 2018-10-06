@@ -6,7 +6,7 @@ This app is used to motivate the study group of freecodecamp(Tingo María).
 
 ## Demo
 
-Demo available [here](http://space-fcc.tk).
+Demo available [here](https://space-fcc.now.sh/).
 
 ![Demo#1](preview.png)
 
