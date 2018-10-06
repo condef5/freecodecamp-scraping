@@ -1,3 +1,4 @@
 {
-  "alias": ["space-fcc.now.sh"]
+  "alias": ["space-fcc.now.sh"],
+  "type": "npm"
 }
