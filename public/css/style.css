@@ -8,14 +8,22 @@
   color: #000;
 }
 
+html {
+    height: 100%;
+}
+
 body {
   margin: 0;
   /* background-image: linear-gradient( 135deg, rgb(129, 251, 184) 10%, rgba(40, 199, 111, 0.43) 100%); */
-  background-image: linear-gradient( 135deg, rgb(60, 140, 231) 10%, rgba(0, 234, 255, 0.55) 100%);
-  height: 100vh;
+  background: linear-gradient( 135deg, rgb(60, 140, 231) 10%, rgba(0, 234, 255, 0.55) 100%) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100%;
   padding: 0;
-  align-items: center;
   display: flex;
+  align-items: center;
   color: #252527;
   font-family: 'Inconsolata', monospace;
   font-size: 16px;
@@ -30,12 +38,30 @@ body {
   padding: 1em;
   border-radius: 5px;
   text-align: center;
+  height: auto;
 }
 
-.list__user, .list__header {
+.list__user, .list__header, .list__leader, .list__leaderboard {
   display: flex;
   margin-bottom: 1.25em;
   justify-content: space-between;
+}
+
+.list__leaderboard {
+  flex-direction: row;
+  align-items: center;
+}
+
+.list__user .avatar {
+  width: 2rem;
+}
+
+.list__leader {
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 10rem;
+  height: 10rem;
 }
 
 .list__header {
@@ -52,19 +78,64 @@ body {
   text-align: left;
 }
 
-.username a {
+a {
   color: rgb(6, 125, 247);
   font-size: inherit;
   text-decoration: none;
 }
 
-.username a:hover {
+a:hover {
   text-decoration: underline;
 }
 
 .username span{
-  text-transform:capitalize;
+  text-transform: capitalize;
 }
+
+.avatar{
+  width: inherit;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.list__leader span:first-of-type{
+  position: absolute;
+  font-size: 4rem;
+  bottom: -1.5rem;
+}
+
+.leader_about {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: .2s;
+}
+
+.leader_about p {
+  text-transform: capitalize;
+}
+
+.leader_about a {
+  color: white;
+}
+
+.list__leader:hover .leader_about {
+  opacity: 1;
+}
+
+.pos1:after {content: "🥇";}
+.pos2:after {content: "🥈";}
+.pos3:after {content: "🥉";}
 
 h2 {
   font-size: 1.75em;
