@@ -54,15 +54,16 @@ body {
   display: flex;
   margin-bottom: 1.25em;
   justify-content: space-between;
+  align-items: center;
 }
 
 .list__leaderboard {
   flex-direction: row;
-  align-items: center;
 }
 
 .list__user .avatar {
   width: 2rem;
+  margin-right: 5px;
 }
 
 .list__leader {
@@ -85,6 +86,12 @@ body {
 
 .username {
   text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.username__index {
+  width: 25px;
 }
 
 a {

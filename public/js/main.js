@@ -1,4 +1,3 @@
-
 fetch("/data")
 .then(response => response.json())
 .then(data => {
@@ -32,7 +31,7 @@ fetch("/data")
    users += `
       <div class="list__user">
         <div class="username">
-          <span>${index + 1}. </span>
+          <span class="username__index">${index + 1}. </span>
           <img class="avatar" src="${user.picture}"/>
           <span>${user.name.toLowerCase()}</span>
           <a href="https://www.freecodecamp.org/${user.username}" target="_blank">@${user.username}</a>
