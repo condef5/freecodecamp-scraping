@@ -1,24 +1,36 @@
 const puppeteer = require("puppeteer");
 const fetch = require("node-fetch");
 const express = require("express");
-
-const redis = require("redis");
+const cache = require("memory-cache");
 
 // create express application instance
 const app = express();
-
-// create and connect redis client to local instance.
-const client = redis.createClient({
-  port: 6379,
-  host: "127.0.0.1",
-});
-
 const port = process.env.PORT || "3000";
 const urlUsers =
   "https://raw.githubusercontent.com/condef5/freecodecamp-scraping/master/users.json";
+const memCache = new cache.Cache();
+
+const cacheMiddleware = duration => {
+  return (req, res, next) => {
+    const key = "__express__" + req.originalUrl || req.url;
+    const cacheContent = JSON.parse(memCache.get(key));
+    if (cacheContent) {
+      res.json({ ...cacheContent, source: "cache" });
+      return;
+    } else {
+      res.sendResponse = res.json;
+      res.json = body => {
+        memCache.put(key, JSON.stringify(body), duration * 1000);
+        res.sendResponse(body);
+      };
+      next();
+    }
+  };
+};
 
 async function getUsers() {
   try {
+    console.time("getInfoUsers");
     const response = await fetch(urlUsers);
     const { users } = await response.json();
     const browser = await puppeteer.launch({
@@ -68,21 +80,11 @@ app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
 
-app.get("/data", async (req, res) => {
+app.get("/data", cacheMiddleware(3600), async (req, res) => {
   req.setTimeout(10000);
-
-  const userRedisKey = "user:data";
-  console.time("getInfoUsers");
-
-  return client.get(userRedisKey, async (err, users) => {
-    if (users) {
-      return res.json({ source: "cache", data: JSON.parse(users) });
-    } else {
-      const users = await getUsers();
-      client.setex(userRedisKey, 3600, JSON.stringify(users));
-      return res.json({ source: "api", data: users });
-    }
-  });
+  const users = await getUsers();
+  console.log('llego jhasta ')
+  return res.json({ source: "api", data: users });
 });
 
 app.listen(3000, function() {
