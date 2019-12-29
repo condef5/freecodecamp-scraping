@@ -12,6 +12,7 @@
     "redis": "^2.8.0"
   },
   "scripts": {
-    "build": "node index.js"
+    "build": "node index.js",
+    "server": "node server/index.js"
   }
 }
