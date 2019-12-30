@@ -71,6 +71,7 @@ body {
 }
 
 .list__leader {
+  align-items: center;
   flex-direction: column;
   align-items: center;
   position: relative;
@@ -137,6 +138,7 @@ a:hover {
   font-size: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   transition: 0.2s;
 }
@@ -170,22 +172,36 @@ h2 {
 @media (max-width: 520px) {
   .list__leaderboard {
     display: flex;
-    flex-direction: column;
     margin-bottom: 1.25em;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
+  .list__leader {
+    width: 8em;
+    height: 8em;
+  }
+  .leader_about {
+    font-size: 0.85em;
+  }
+}
+
+.list__users {
+  max-height: 500px;
+  overflow-x: auto;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding: 0 1em;
 }
 
 @media (max-width: 400px) {
   .username {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 80%;
+    flex-wrap: wrap;
   }
 
   .points {
-    margin: auto 0;
+    margin: 10px;
     width: 20%;
   }
 }
