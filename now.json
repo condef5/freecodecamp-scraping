@@ -1,3 +1,6 @@
 {
-  "alias": ["space-fcc-leaderboard.now.sh"]
+  "alias": ["space-fcc-leaderboard.now.sh"],
+  "github": {
+    "autoAlias": false
+  }
 }
