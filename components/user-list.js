@@ -4,15 +4,14 @@ import fetch from "node-fetch";
 
 const fetcher = url => fetch(url).then(response => response.json());
 
-const defaultImage =
-  "https://s3.amazonaws.com/freecodecamp/camper-image-placeholder.png";
+const defaultImage = "https://i.imgur.com/ya5TEXq.png";
 
 function UserList() {
   const { data, error } = useSWR("/api/users", fetcher);
 
   if (error) return <div>failed to load</div>;
 
-  if (!data) return <div>loading</div>;
+  if (!data) return <div>loading...</div>;
 
   const users = data.users.sort((a, b) => b.points - a.points);
 
