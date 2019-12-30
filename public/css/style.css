@@ -34,6 +34,10 @@ body {
   font-size: 16px;
 }
 
+#__next {
+  width: 100%;
+}
+
 .container {
   margin: 1em auto;
   max-width: 600px;
@@ -184,4 +188,9 @@ h2 {
     margin: auto 0;
     width: 20%;
   }
+}
+
+/* helpers */
+.mr-2 {
+  margin-right: 0.5rem;
 }
